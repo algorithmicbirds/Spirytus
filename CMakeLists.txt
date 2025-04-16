@@ -11,6 +11,10 @@ endif()
 set(CMAKE_WIN32_EXECUTABLE TRUE)
 
 project ("Spirytus")
+file(GLOB_RECURSE SOURCES "src/*.cpp" "src/*.hpp")
 
+set(RESOURCE_PATH ${CMAKE_SOURCE_DIR})
+# Add source to this project's executable.
+add_executable(Spirytus ${SOURCES})
+add_compile_definitions(RESOURCE_PATH="${RESOURCE_PATH}/assets/")
 # Include sub-projects.
-add_subdirectory ("Spirytus")

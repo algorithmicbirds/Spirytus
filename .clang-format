@@ -1,0 +1,11 @@
+BasedOnStyle: LLVM
+SortIncludes: false
+IndentWidth: 4
+UseTab: Never
+ColumnLimit: 100
+AlignArrayOfStructures: Left
+BreakBeforeBraces: Attach
+BinPackArguments: true
+BinPackParameters: true
+AlignAfterOpenBracket: BlockIndent
+Cpp11BracedListStyle: true
