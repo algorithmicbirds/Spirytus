@@ -1,8 +1,10 @@
 #pragma once
 
 #include "../Windows/SpyritusWin.hpp"
-#include "../../SpirytusException.hpp"
-#include "../../resource.h"
+#include "../SpirytusException.hpp"
+#include "../resource.h"
+#include "../Input/Keyboard/Keyboard.hpp"
+#include "../Input/Mouse/Mouse.hpp"
 
 class Window {
   public:
@@ -41,6 +43,9 @@ class Window {
     ~Window();
     Window(const Window &) = delete;
     Window &operator=(const Window &) = delete;
+    static std::optional<int> ProccessMessages();
+    Keyboard keyboard;
+    Mouse mouse;
 
   private:
     static LRESULT CALLBACK

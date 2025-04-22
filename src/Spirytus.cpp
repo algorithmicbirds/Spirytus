@@ -1,21 +1,12 @@
-﻿#include "Platform/Window/window.hpp"
+﻿#include "Window/window.hpp"
+#include "App.hpp"
 
 #include <iostream>
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine, int nCmdShow) {
     try {
-        Window wnd(800, 600, "Spirytus");
+        App app;
+        return app.Start();
         // message pump
-        MSG msg;
-        BOOL gResult;
-        while (gResult = (GetMessage(&msg, nullptr, 0, 0)) > 0) {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
-        }
-        if (gResult == -1) {
-            return -1;
-        } else {
-            return msg.wParam;
-        }
     } catch (const SpirytusException &e) {
         MessageBox(nullptr, e.what(), e.GetType(), MB_OK | MB_ICONEXCLAMATION);
     } catch (const std::exception &e) {

@@ -15,7 +15,6 @@
 #define NOATOM
 #define NOCLIPBOARD
 #define NOCOLOR
-#define NOCTLMGR
 #define NODRAWTEXT
 #define NOKERNEL
 #define NONLS

@@ -1,6 +1,7 @@
 ﻿cmake_minimum_required(VERSION 3.8)
 
 # Set project properties
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 set(CMAKE_WIN32_EXECUTABLE TRUE)
 
