@@ -1,8 +1,24 @@
 #pragma once
 
-#include "SpirytusWin.hpp"
+#include "../Windows/SpyritusWin.hpp"
+#include "../../SpirytusException.hpp"
+#include "../../resource.h"
 
 class Window {
+  public:
+    class Exception : SpirytusException {
+      public:
+        Exception(const char *file, int line, HRESULT hr) noexcept;
+        const char *what() const noexcept override;
+        virtual const char *GetType() const noexcept;
+        static std::string TranslateErrorCode(HRESULT hr) noexcept;
+        HRESULT GetErrorCode() const noexcept;
+        std::string GetErrorString() const noexcept;
+
+      private:
+        HRESULT hr;
+    };
+
   private:
     // singleton manages registration / cleanup of window class
     class WindowClass {
@@ -38,3 +54,7 @@ class Window {
     int width;
     int height;
 };
+
+// error exception helper macro
+#define SHWND_EXCEPT(hr) Window::Exception(__FILE__, __LINE__, hr)
+#define SHWND_LAST_EXCEPT() Window::Exception(__FILE__, __LINE__, GetLastError())
