@@ -19,12 +19,12 @@ set(RESOURCE_PATH "${CMAKE_SOURCE_DIR}/Resources")
 
 # Collect all source and resource files
 file(GLOB_RECURSE SOURCES "src/*.cpp" "src/*.hpp")
-file(GLOB RESOURCE_FILES "${RESOURCE_PATH}/*.rc")  # Include .rc files from Resources
+file(GLOB RESOURCE_FILES "src/MSVC/*.rc")  # Include .rc files from Resources
 
 # Add the executable and include resource files
 add_executable(Spirytus ${SOURCES} ${RESOURCE_FILES})
 
 # Set the resource path for compilation
 add_compile_definitions(RESOURCE_PATH="${RESOURCE_PATH}")
-
+ target_link_libraries(Spirytus PRIVATE d3d11.lib dxgi.lib)
 # Include sub-projects if needed

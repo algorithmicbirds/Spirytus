@@ -1,4 +1,4 @@
-#include "../src/resource.h"
+#include "resource.h"
 
 #define IDI_APP_ICON 101
 IDI_APP_ICON ICON "icons/spirytus_icon.ico"

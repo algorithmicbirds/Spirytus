@@ -2,9 +2,13 @@
 
 #include "../Windows/SpyritusWin.hpp"
 #include "../SpirytusException.hpp"
-#include "../resource.h"
-#include "../Input/Keyboard/Keyboard.hpp"
-#include "../Input/Mouse/Mouse.hpp"
+#include "../MSVC/resource.h"
+#include "Input/Keyboard/Keyboard.hpp"
+#include "Input/Mouse/Mouse.hpp"
+#include "../Graphics/Graphics.hpp"
+
+// std
+#include <memory>
 
 class Window {
   public:
@@ -46,7 +50,7 @@ class Window {
     static std::optional<int> ProccessMessages();
     Keyboard keyboard;
     Mouse mouse;
-
+    Graphics &Gfx() { return *pGfx; }
   private:
     static LRESULT CALLBACK
     HandleMsgSetup(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept;
@@ -58,6 +62,7 @@ class Window {
     HWND hWnd;
     int width;
     int height;
+    std::unique_ptr<Graphics> pGfx;
 };
 
 // error exception helper macro

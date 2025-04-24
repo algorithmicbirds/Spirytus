@@ -1,4 +1,3 @@
-#include "../../Windows/SpyritusWin.hpp"
 #include "Mouse.hpp"
 
 std::pair<int, int> Mouse::GetPos() const noexcept { return {x, y}; }

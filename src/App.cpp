@@ -11,4 +11,6 @@ int App::Start() {
     }   
 }
 
-void App::Update() {};
+void App::Update() { 
+    appWindow.Gfx().ClearBuffer(0.0f, 0.0f, 1.0f);
+    appWindow.Gfx().EndFrame(); };

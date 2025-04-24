@@ -1,14 +1,5 @@
 #include "Window.hpp"
 
-#include <dwmapi.h>
-#pragma comment(lib, "dwmapi.lib")
-
-// window class
-
-void ApplyDarkTitleBar(HWND hWnd, bool dark) {
-    BOOL useDark = dark ? TRUE : FALSE;
-    DwmSetWindowAttribute(hWnd, 20 /* DWMWA_USE_IMMERSIVE_DARK_MODE */, &useDark, sizeof(useDark));
-}
 
 Window::WindowClass Window::WindowClass::wndClass;
 Window::WindowClass::WindowClass() noexcept : hInst(GetModuleHandle(nullptr)) {
@@ -59,10 +50,9 @@ Window::Window(int width, int height, const char *name) noexcept {
         throw SHWND_LAST_EXCEPT();
     }
 
-    // FORCE dark title bar
-    ApplyDarkTitleBar(hWnd, false);
 
     ShowWindow(hWnd, SW_SHOWDEFAULT);
+    pGfx = std::make_unique<Graphics>(hWnd);
 }
 
 Window::~Window() { DestroyWindow(hWnd); }

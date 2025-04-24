@@ -1,6 +1,7 @@
 #pragma once
 #include <queue>
 #include <optional>
+#include "../../../Windows/SpyritusWin.hpp"
 
 class Mouse {
     friend class Window;
